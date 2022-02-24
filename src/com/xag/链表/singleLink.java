@@ -7,21 +7,25 @@ package com.xag.链表;
 public class singleLink {
     public static void main(String[] args) {
         orderLink link = new orderLink();
-        link.addNode("赵云1");
-        link.addNode("赵云2");
-        link.addNode("赵云3");
-        link.addNode("赵云4");
-        link.addNode("赵云5");
-        link.addNode("赵云6");
-        link.addNode("赵云7");
-        link.addNode("赵云8");
-        link.addNode("赵云9");
-        link.addNode("赵云10");
-        link.displayLink();
-        System.out.println("----------------------------");
-        link.deleteNode(10);
-        link.displayLink();
-        System.out.println(link.getLinkSize());
+        dataNode dataNode1 = new dataNode("赵云1");
+        dataNode dataNode2 = new dataNode("赵云2");
+        dataNode dataNode3 = new dataNode("赵云3");
+        dataNode dataNode4 = new dataNode("赵云4");
+        dataNode dataNode5 = new dataNode("赵云5");
+        link.addNode(dataNode1);
+        link.addNode(dataNode2);
+        link.addNode(dataNode3);
+        link.addNode(dataNode4);
+        link.addNode(dataNode5);
+
+
+        System.out.println("---------------------------------------------");
+//        link.reverseLink();
+//        link.displayLink();
+        System.out.println(link.isCircleLink());
+        System.out.println("---------------------------------------------");
+
+
     }
 }
 
@@ -42,17 +46,17 @@ class orderLink{
     }
 
     // 2.添加结点
-    void addNode(String node){
-        dataNode dataNode = new dataNode(node);
+    void addNode(dataNode node){
+
         if (head == null){
-            head = dataNode;
+            head = node;
         }else
         {
             dataNode p = head;
             while (p.nextNode != null){
                 p = p.nextNode;
             }
-            p.nextNode = dataNode;
+            p.nextNode = node;
         }
     }
     // 3.输出链表数据
@@ -160,19 +164,37 @@ class orderLink{
 
     // 8.反转链表
     void reverseLink(){
-        dataNode begin = head;
-        dataNode mid = begin;
-        dataNode end = begin;
-
-        while (end != null){
-            if (begin == head){
-                begin.nextNode = null;
-            }else {
-                end = end.nextNode;
-                mid = mid.nextNode;
+        dataNode pre = null;
+        dataNode current = head;
+        dataNode next = head;
+        while (next != null){
+            next = current.nextNode;
+            current.nextNode = pre;
+            pre = current;
+            if (next != null){
+                current = next;
             }
         }
-        head = end;
+        this.head = current;
+    }
+    // 9.判断单链表有环
+    boolean isCircleLink(){
+        dataNode p1 = head;
+        dataNode p2 = head;
+        while (p2 != null){
+            // 当next.next都是null的时候就已经不可能还存在环了
+            if (p2.nextNode != null){
+                p2 = p2.nextNode.nextNode;
+                p1 = p1.nextNode;
+                if (p1 == p2){
+                    return true;
+                }
+            }else
+            {
+                return false;
+            }
+        }
+        return false;
     }
 
 }
