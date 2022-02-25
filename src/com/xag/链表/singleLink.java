@@ -18,12 +18,22 @@ public class singleLink {
         link.addNode(dataNode4);
         link.addNode(dataNode5);
 
+        orderLink link2 = new orderLink();
+
+        dataNode dataNode6 = new dataNode("赵云6");
+        dataNode dataNode7 = new dataNode("赵云7");
+
+        link2.addNode(dataNode4);
+        link2.addNode(dataNode6);
+//        link2.addNode(dataNode5);
 
         System.out.println("---------------------------------------------");
 //        link.reverseLink();
-//        link.displayLink();
-        System.out.println(link.isCircleLink());
+        link.displayLink();
         System.out.println("---------------------------------------------");
+
+        link2.displayLink();
+        System.out.println(orderLink.isCrossLink(link,link2));
 
 
     }
@@ -192,6 +202,32 @@ class orderLink{
             }else
             {
                 return false;
+            }
+        }
+        return false;
+    }
+    // 10.判断两条单链表是否相交
+    static boolean isCrossLink(orderLink link1,orderLink link2){
+
+        Integer lenA = link1.getLinkSize();
+        Integer lenB = link2.getLinkSize();
+        orderLink maxLink = lenA >= lenB?link1:link2;
+        orderLink minLink = lenA <  lenB?link1:link2;
+
+        Integer step = 0;
+        Integer substep = lenA >= lenB ? (lenA - lenB):(lenB - lenA);
+        dataNode pmaxNode = maxLink.head;
+        dataNode pminNode = minLink.head;
+        while (step < substep){
+            pmaxNode = pmaxNode.nextNode;
+            step = step + 1;
+        }
+        while (pmaxNode != null && pminNode != null){
+            if (pmaxNode == pminNode){
+                return true;
+            }else {
+                pmaxNode = pmaxNode.nextNode;
+                pminNode = pminNode.nextNode;
             }
         }
         return false;
