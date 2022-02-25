@@ -2,7 +2,7 @@
     单链表的基本操作
  */
 
-package com.xag.链表;
+package com.Lwh.链表;
 
 public class singleLink {
     public static void main(String[] args) {
@@ -54,7 +54,6 @@ class orderLink{
     orderLink(){
         head = null;
     }
-
     // 2.添加结点
     void addNode(dataNode node){
 
@@ -77,7 +76,6 @@ class orderLink{
             p=p.nextNode;
         }
     }
-
     // 4.获取链表长度
     Integer getLinkSize(){
         dataNode p = head;
@@ -88,7 +86,6 @@ class orderLink{
         }
         return size;
     }
-
     // 5.指定位置插入结点
     void insertNode(String node,Integer position){
         if (position < 0 || position > getLinkSize()){
@@ -119,7 +116,6 @@ class orderLink{
             }
         }
     }
-
     // 6.修改指定位置结点的值
     void modifyNode(String node,Integer position){
         if (position <= 0 || position > getLinkSize()){
@@ -140,7 +136,6 @@ class orderLink{
         }
 
     }
-
     // 7.删除指定位置结点
     void deleteNode(Integer position){
         if (position <= 0 || position > getLinkSize()){
@@ -171,7 +166,6 @@ class orderLink{
             }
         }
     }
-
     // 8.反转链表
     void reverseLink(){
         dataNode pre = null;
@@ -232,6 +226,8 @@ class orderLink{
         }
         return false;
     }
+    // 11.返回倒数第K个结点的值
+
 
 }
 
