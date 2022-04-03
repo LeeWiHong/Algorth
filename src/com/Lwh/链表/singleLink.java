@@ -227,18 +227,18 @@ class orderLink{
         return false;
     }
     // 11.返回倒数第K个结点的值
-    dataNode returnReverseKNode(Integer k){
-        dataNode p1 = head;
-        dataNode p2 = p1;
-        Integer step = 0;
-        while (step < k){
-            p1 = p1.nextNode;
-            step ++;
-        }
-
-
-
-    }
+//    dataNode returnReverseKNode(Integer k){
+//        dataNode p1 = head;
+//        dataNode p2 = p1;
+//        Integer step = 0;
+//        while (step < k){
+//            p1 = p1.nextNode;
+//            step ++;
+//        }
+//
+//
+//
+//    }
 
 
 }
